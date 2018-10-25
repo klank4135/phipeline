@@ -28,6 +28,6 @@ RUN pecl channel-update pecl.php.net \
 RUN rm /var/cache/apk/* && \
     mkdir -p /var/www
 
-COPY conf/supervisord-app.conf /etc/supervisord.conf
+COPY lib/app/conf/supervisord-app.conf /etc/supervisord.conf
 
 ENTRYPOINT ["/usr/bin/supervisord", "-n", "-c", "/etc/supervisord.conf"]

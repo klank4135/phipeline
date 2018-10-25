@@ -15,7 +15,7 @@ services:
   web:
     build:
       context: ./
-      dockerfile: /lib/web/web.dockerfile
+      dockerfile: lib/web/web.dockerfile
     working_dir: /var/www/html
     volumes_from:
       - app

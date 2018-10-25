@@ -7,7 +7,7 @@ RUN addgroup -g 1000 -S www-data \
 
 RUN rm /var/cache/apk/*
 
-COPY conf/nginx.conf /etc/nginx/nginx.conf
-COPY supervisord-web.conf /etc/supervisord.conf
+COPY lib/web/conf/nginx.conf /etc/nginx/nginx.conf
+COPY lib/web/conf/supervisord-web.conf /etc/supervisord.conf
 
 ENTRYPOINT ["/usr/bin/supervisord", "-n", "-c", "/etc/supervisord.conf"]
