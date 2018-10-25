@@ -35,4 +35,4 @@ services:
       - 33061:3306
 
 volumes:
-dbdata:
+  dbdata:
