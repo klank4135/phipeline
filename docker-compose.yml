@@ -1,0 +1,38 @@
+version: '2'
+
+services:
+  app:
+    build:
+      context: ./
+      dockerfile: lib/app/app.dockerfile
+    working_dir: /var/www/html
+    volumes:
+      - ./:/var/www/html
+    environment:
+      - "DB_PORT=3306"
+      - "DB_HOST=database"
+
+  web:
+    build:
+      context: ./
+      dockerfile: /lib/web/web.dockerfile
+    working_dir: /var/www/html
+    volumes_from:
+      - app
+    ports:
+      - 8080:80
+
+  database:
+    image: mysql:5.7
+    volumes:
+      - dbdata:/var/lib/mysql
+    environment:
+      - "MYSQL_DATABASE=xaluu"
+      - "MYSQL_USER=xaluu"
+      - "MYSQL_PASSWORD=myxaluu"
+      - "MYSQL_ROOT_PASSWORD=S3cr3tS4uc3"
+    ports:
+      - 33061:3306
+
+volumes:
+dbdata:
